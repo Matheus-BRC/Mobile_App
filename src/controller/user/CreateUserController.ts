@@ -18,7 +18,7 @@ class CreateUserController {
             password : password
         };
 
-        return response.json({message:"Rgistro incluido com Sucesso"});
+        return response.json({message:"Registro incluido com Sucesso"});
     }
 }
 
