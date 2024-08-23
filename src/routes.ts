@@ -5,20 +5,20 @@ import { ListUsersController } from "./controller/user/ListUserCrontroller";
 import { UpdateUserController } from "./controller/user/UpdateUserController";
 import { DeleteUserController } from "./controller/user/deleteUserController";
 
-const router = Router(); // inicia a rota
+const router = Router();                                    // inicia a rota
 
-const createUserController = new CreateUserController(); // instancia o objeto createUserController
-const listUsersController = new ListUsersController();
-const updateUserController = new UpdateUserController();
-const deleteUserController = new DeleteUserController();
+const createUserController = new CreateUserController();    // instancia o objeto createUserController da classe CreateUserController
+const listUsersController = new ListUsersController();      // instancia o objeto listUsersController da classe ListUsersController
+const updateUserController = new UpdateUserController();    // instancia o objeto updateUserController da classe UpdateUserController
+const deleteUserController = new DeleteUserController();    // instancia o objeto deleteUserController da classe DeleteUserController
 
-const createCategoryController = new CreateCategoryController();
+const createCategoryController = new CreateCategoryController();    // instancia o objeto createCategoryController da classe CreateCategoryController
 
-router.post("/users", createUserController.handle);
-router.get("/users", listUsersController.handle);
-router.put("/users/:id", updateUserController.handle);
-router.delete("/users/:id", deleteUserController.handle);
+router.post("/users", createUserController.handle);             // cria a rota /users com metodo POST
+router.get("/users", listUsersController.handle);               // cria a rota /users com metodo GET
+router.put("/users/:id", updateUserController.handle);          // cria a rota /users/:id com metodo PUT
+router.delete("/users/:id", deleteUserController.handle);       // cria a rota /users/:id com metodo DELETE
 
-router.post("/category", createCategoryController.handle);
+router.post("/category", createCategoryController.handle);      // cria a rota /category com metodo POST
 
-export {router};
+export {router};                                                // exporta a rota
