@@ -1,4 +1,5 @@
 import { Request, Response } from "express";
+import { UpdateUserService } from "../../service/user/UpdateUserService";
 
 class UpdateUserController {
 
@@ -14,12 +15,15 @@ class UpdateUserController {
      
     const user = 
     {
-       name:name,           // define name como sendo o name do corpo da resquisição request.body
-       email:email,         // define email como sendo o email do corpo da resquisição request.body
-       admin:admin,         // define admin como sendo o admin do corpo da resquisição request.body
-       password:password    // define password como sendo o pasword do corpo da resquisição request.body
-     };   
+      id:id,
+      name:name,           // define name como sendo o name do corpo da resquisição request.body
+      email:email,         // define email como sendo o email do corpo da resquisição request.body
+      admin:admin,         // define admin como sendo o admin do corpo da resquisição request.body
+      password:password    // define password como sendo o pasword do corpo da resquisição request.body
+    };   
 
+     const createUserService = new UpdateUserService();
+     const ret = await createUserService.execute(user);
      return response.json({message:"Registro Editado com Sucesso"});  // printa na resposta (response) da requisição a message
   }
 }

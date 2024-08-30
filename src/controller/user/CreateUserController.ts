@@ -1,4 +1,5 @@
 import { Request, Response } from "express";
+import { CreateUserService } from "../../service/user/CreateUserService";
 
 class CreateUserController {                                        // declara a classe CreateUserController
 
@@ -18,6 +19,8 @@ class CreateUserController {                                        // declara a
             password : password     // define password como sendo o pasword do corpo da resquisição request.body
         };
 
+        const createUserService = new CreateUserService();
+        const ret = await createUserService.execute(user);
         return response.json({message:"Registro incluido com Sucesso"});    // printa na resposta (response) da requisição a message
     }
 }

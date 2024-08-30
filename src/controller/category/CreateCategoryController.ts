@@ -1,24 +1,25 @@
 import { Request, Response } from "express";
+import { CreateCategoryService } from "../../service/category/CreateCategoryService";
 
 class CreateCategoryController {
 
     async handle(request: Request, response: Response){
-        const { name, email, admin, password } = request.body;
+        const { id, name, description } = request.body;
 
+        console.log(id);
         console.log(name);
-        console.log(email);
-        console.log(admin);
-        console.log(password);
+        console.log(description);
 
-        const user = 
+        const category = 
         {
+            id: id,
             name : name,
-            email : email,
-            admin : admin,
-            password : password
+            description: description,
         };
 
-        return response.json({message:"Registro incluido com Sucesso"});
+        const createCategoryService = new CreateCategoryService();
+        const ret = await createCategoryService.execute(category);
+        return response.json(ret);
     }
 }
 
