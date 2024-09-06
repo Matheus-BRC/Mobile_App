@@ -3,12 +3,12 @@ import { IUserRequest } from "../../interface/UserInterface";
 class UpdateUserService {
     async execute({id, name, email, admin = false, password }: IUserRequest) {
         
-        if (!email) {
-          throw new Error("Email incorrect");
+        if (!id) {
+          throw new Error("ID incorrect");
         }
 
-        if (!password) {
-          throw new Error("Password incorrect");
+        if (!admin) {
+          throw new Error("Admin incorrect");
         }
 
         var vuser = {
@@ -19,7 +19,7 @@ class UpdateUserService {
           password: password
         }
 
-        return { message: "Registro Update com Sucesso" }
+        return { message: "Usuário Atualizado com Sucesso" }
     }
 }
 

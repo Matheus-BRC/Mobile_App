@@ -3,15 +3,23 @@ import { IClientRequest } from "../../interface/ClientInterface";
 class CreateClientService {
     async execute({ id, name, description, cpf, address, fone}: IClientRequest) {
       
-      if (!id) {
-        throw new Error("ID Incorrect");
+      if (!name) {
+        throw new Error("Name Incorrect");
       }
   
-      if (!description) {
-        throw new Error("Description Incorrect");
+      if (!cpf) {
+        throw new Error("CPF Incorrect");
+      }
+
+      if (!address) {
+        throw new Error("Address Incorrect");
+      }
+
+      if (!fone) {
+        throw new Error("Fone Incorrect");
       }
       
-      return { message: "Cliente incluido com Sucesso" };
+      return { message: "Cliente Incluido com Sucesso" };
     }
   }
   

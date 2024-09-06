@@ -1,6 +1,6 @@
-class ListCategoryService {
+class ListProductService {
     async execute() {
-        const category = [ 
+        const product = [ 
             {          
                 name: "Matheus",
                 email: "matheus@gmail.com",
@@ -14,8 +14,8 @@ class ListCategoryService {
                 password: "1234"
             }     
         ];        
-        return category;
+        return product;
     }
 }
 
-export { ListCategoryService };
+export { ListProductService };

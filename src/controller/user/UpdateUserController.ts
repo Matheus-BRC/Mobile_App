@@ -24,7 +24,7 @@ class UpdateUserController {
 
      const createUserService = new UpdateUserService();
      const ret = await createUserService.execute(user);
-     return response.json({message:"Registro Editado com Sucesso"});  // printa na resposta (response) da requisição a message
+     return response.json(ret);  // printa na resposta (response) da requisição a message
   }
 }
 

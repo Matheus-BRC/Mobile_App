@@ -6,7 +6,7 @@ class DeleteUserController {                                            // decla
     const id= request.params.id;                                        // declara a variável id como sendo o parâmetro id da request
     const deleteUserService = new DeleteUserService();
     const ret = await deleteUserService.execute(id);
-    return response.json({message:"Registro Excluido com Sucesso"});    // printa na resposta (response) da requisição a message
+    return response.json(ret);    // printa na resposta (response) da requisição a message
   }
 }
  

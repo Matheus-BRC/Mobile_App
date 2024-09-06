@@ -3,15 +3,19 @@ import { IProductRequest } from "../../interface/ProductInterface";
 class CreateProductService {
   async execute({ id, name, description, price, categoryId }: IProductRequest) {
     
-    if (!id) {
-      throw new Error("ID Incorrect");
+    if (!name) {
+      throw new Error("Name Incorrect");
     }
 
-    if (!description) {
-      throw new Error("Description incorrect");
+    if (!price) {
+      throw new Error("Price Incorrect");
+    }
+
+    if (!categoryId) {
+      throw new Error("CategoryId Incorrect");
     }
     
-    return { message: "Produto incluido com Sucesso" };
+    return { message: "Produto Incluido com Sucesso" };
   }
 }
 

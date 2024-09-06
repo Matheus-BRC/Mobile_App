@@ -7,7 +7,7 @@ class CreateCategoryService {
             throw new Error("Name Incorrect");
         }
         
-        return { message: "Categoria incluida com Sucesso"};
+        return { message: "Categoria Incluida com Sucesso"};
     }
 }
 

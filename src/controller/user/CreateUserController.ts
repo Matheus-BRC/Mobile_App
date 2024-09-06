@@ -21,7 +21,7 @@ class CreateUserController {                                        // declara a
 
         const createUserService = new CreateUserService();
         const ret = await createUserService.execute(user);
-        return response.json({message:"Registro incluido com Sucesso"});    // printa na resposta (response) da requisição a message
+        return response.json(ret);    // printa na resposta (response) da requisição a message
     }
 }
 
