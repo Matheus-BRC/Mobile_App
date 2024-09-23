@@ -1,13 +1,25 @@
 import { ICategoryRequest } from "../../interface/CategoryInterface";
+import { CategoryRepository } from "../../repository/CategoryRepository";
+import { getCustomRepository } from "typeorm";
 
 class CreateCategoryService {
-    async execute({ id, name, description }: ICategoryRequest){
+    async execute({ name, description }: ICategoryRequest){
 
         if (!name) {
             throw new Error("Name Incorrect");
         }
         
-        return { message: "Categoria Incluida com Sucesso"};
+        const categoriesRepository = getCustomRepository(CategoryRepository);
+        const category = categoriesRepository.create(
+        {
+            name, 
+            description
+        });
+        
+        await categoriesRepository.save(category);
+
+        return category;
+        // return { message: "Categoria Incluida com Sucesso"};
     }
 }
 

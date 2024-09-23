@@ -36,6 +36,6 @@ yarn typeorm -help // Verificar se as configurações funcionaram
 
 yarn typeorm migration:generate --name user // Cria a migração da entidade para o arquivo a ser executado
 
-yarn typeorm migration:run // Executa a migration no banco de dados
+yarn typeorm migration:run > Executa a migration no banco de dados
 
-yarn typeorm migration:revert // Reverte as atualizações
+yarn typeorm migration:revert > Reverte as atualizações

@@ -1,7 +1,9 @@
 import { IProductRequest } from "../../interface/ProductInterface";
+import { ProductRepository } from "../../repository/ProductRepository";
+import { getCustomRepository } from "typeorm";
 
 class CreateProductService {
-  async execute({ id, name, description, price, categoryId }: IProductRequest) {
+  async execute({ name, description, price, categoryId }: IProductRequest) {
     
     if (!name) {
       throw new Error("Name Incorrect");
@@ -15,7 +17,20 @@ class CreateProductService {
       throw new Error("CategoryId Incorrect");
     }
     
-    return { message: "Produto Incluido com Sucesso" };
+    const productsRepository = getCustomRepository(ProductRepository);
+    const product = productsRepository.create(
+      {
+        name, 
+        description, 
+        price, 
+        categoryId
+      });
+    
+    await productsRepository.save(product);
+
+    return product;
+    
+    // return { message: "Produto Incluido com Sucesso" };
   }
 }
 

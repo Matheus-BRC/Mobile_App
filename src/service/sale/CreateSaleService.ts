@@ -1,7 +1,9 @@
 import { ISaleRequest } from "../../interface/SaleInterface";
+import { SaleRepository } from "../../repository/SaleRepository";
+import { getCustomRepository } from "typeorm";
 
 class CreateSaleService {
-    async execute({ id, userId, productId, clientId, quantity }: ISaleRequest){
+    async execute({ userId, productId, clientId, quantity }: ISaleRequest){
         
         if (!userId) {
             throw new Error("UserId Incorrect");
@@ -18,8 +20,21 @@ class CreateSaleService {
         if (!quantity) {
             throw new Error("Quantity Incorrect");
         }
+
+        const salesRepository = getCustomRepository(SaleRepository);
+        const sale = salesRepository.create(
+        {
+            userId, 
+            productId, 
+            clientId, 
+            quantity
+        });
         
-        return { message: "Oferta Incluida com Sucesso"};
+        await salesRepository.save(sale);
+
+        return sale;
+        
+        // return { message: "Oferta Incluida com Sucesso"};
     }
 }
 

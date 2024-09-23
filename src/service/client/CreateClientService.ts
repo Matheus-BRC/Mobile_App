@@ -1,7 +1,9 @@
 import { IClientRequest } from "../../interface/ClientInterface";
+import { ClientRepository } from "../../repository/ClientRepository";
+import { getCustomRepository } from "typeorm";
 
 class CreateClientService {
-    async execute({ id, name, description, cpf, address, fone}: IClientRequest) {
+    async execute({ name, description, cpf, address, fone}: IClientRequest) {
       
       if (!name) {
         throw new Error("Name Incorrect");
@@ -18,8 +20,21 @@ class CreateClientService {
       if (!fone) {
         throw new Error("Fone Incorrect");
       }
+
+      const clientsRepository = getCustomRepository(ClientRepository);
+      const client = clientsRepository.create(
+        {
+          name, 
+          description, 
+          cpf, 
+          address, 
+          fone
+        });
       
-      return { message: "Cliente Incluido com Sucesso" };
+      await clientsRepository.save(client);
+
+      return client;
+      // return { message: "Cliente Incluido com Sucesso" };
     }
   }
   
