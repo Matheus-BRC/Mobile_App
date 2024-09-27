@@ -25,6 +25,10 @@ import { ListSaleController } from "./controller/sale/ListSaleController";
 import { UpdateSaleController } from "./controller/sale/UpdateSaleController";
 import { DeleteSaleController } from "./controller/sale/DeleteSaleController";
 
+import { AuthenticateUserController } from "./controller/autentication/AutenticateUserController";
+
+import { ensureAuthenticated } from "./midleware/ensureAutenticated";
+
 const router = Router();                                    // inicia a rota
 
 const createUserController = new CreateUserController();    // instancia o objeto createUserController da classe CreateUserController
@@ -51,6 +55,12 @@ const createSaleController = new CreateSaleController();
 const listSaleController = new ListSaleController();
 const updateSaleController = new UpdateSaleController();
 const deleteSaleController = new DeleteSaleController();
+
+const authenticateUserController = new AuthenticateUserController();
+
+router.post("/login", authenticateUserController.handle);
+
+router.use(ensureAuthenticated);
 
 router.post("/users", createUserController.handle);             // cria a rota /users com metodo POST
 router.get("/users", listUsersController.handle);               // cria a rota /users com metodo GET

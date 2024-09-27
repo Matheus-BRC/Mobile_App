@@ -6,11 +6,6 @@ class CreateUserController {                                        // declara a
     async handle(request: Request, response: Response){             // declara o metodo assincrono handle com os parâmetros request e response
         const { name, email, admin, password } = request.body;      // extrai as variáveis name, email, admin, password do corpo da request
 
-        console.log(name);      // printa no console o name
-        console.log(email);     // printa no console o email
-        console.log(admin);     // printa no console o admin
-        console.log(password);  // printa no console o password
-
         const user =            // declara a variável const users
         {
             name : name,            // define name como sendo o name do corpo da resquisição request.body

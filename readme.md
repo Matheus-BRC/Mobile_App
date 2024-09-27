@@ -39,3 +39,7 @@ yarn typeorm migration:generate --name user // Cria a migração da entidade par
 yarn typeorm migration:run > Executa a migration no banco de dados
 
 yarn typeorm migration:revert > Reverte as atualizações
+
+yarn add jsonwebtoken // adiciona a biblioteca jsonwebtoken para cryptografia
+
+yarn add express-async-errors // adiciona a biblioteca de tratamento de erros
