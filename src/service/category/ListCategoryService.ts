@@ -1,20 +1,11 @@
+import { getCustomRepository } from "typeorm";
+import { CategoryRepository } from "../../repository/CategoryRepository";
+
 class ListCategoryService {
     async execute() {
-        const category = [ 
-            {          
-                name: "Matheus",
-                email: "matheus@gmail.com",
-                admin: false,
-                password: "1234"
-            }, 
-            {          
-                name: "Fabio",
-                email: "fabio@gmail.com",
-                admin: false,
-                password: "1234"
-            }     
-        ];        
-        return category;
+        const categoryRepository = getCustomRepository(CategoryRepository);        
+        const categorys = await categoryRepository.find();
+        return categorys;
     }
 }
 

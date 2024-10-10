@@ -15,7 +15,7 @@ class DeleteUserService {
         throw new Error("User not exists");
       }
  
-      await usersRepository.delete(id)
+      await usersRepository.delete(id);
       return { message: "Usuário Excluído com Sucesso" }
     }
 }

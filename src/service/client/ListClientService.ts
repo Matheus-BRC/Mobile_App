@@ -1,20 +1,11 @@
+import { getCustomRepository } from "typeorm";
+import { ClientRepository } from "../../repository/ClientRepository";
+
 class ListClientService {
     async execute() {
-        const client = [ 
-            {
-                name: "Matheus",
-                email: "matheus@gmail.com",
-                admin: false,
-                password: "1234"
-            }, 
-            {
-                name: "Fabio",
-                email: "fabio@gmail.com",
-                admin: false,
-                password: "1234"
-            }     
-        ];        
-        return client;
+        const clientRepository = getCustomRepository(ClientRepository);        
+        const clients = await clientRepository.find();
+        return clients;
     }
 }
 

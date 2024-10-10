@@ -1,20 +1,11 @@
+import { getCustomRepository } from "typeorm";
+import { ProductRepository } from "../../repository/ProductRepository";
+
 class ListProductService {
     async execute() {
-        const product = [ 
-            {          
-                name: "Matheus",
-                email: "matheus@gmail.com",
-                admin: false,
-                password: "1234"
-            }, 
-            {          
-                name: "Fabio",
-                email: "fabio@gmail.com",
-                admin: false,
-                password: "1234"
-            }     
-        ];        
-        return product;
+        const productRepository = getCustomRepository(ProductRepository);        
+        const products = await productRepository.find();
+        return products;
     }
 }
 

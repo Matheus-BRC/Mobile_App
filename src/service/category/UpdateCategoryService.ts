@@ -1,4 +1,6 @@
+import { getCustomRepository } from "typeorm";
 import { ICategoryRequest } from "../../interface/CategoryInterface";
+import { CategoryRepository } from "../../repository/CategoryRepository";
 
 class UpdateCategoryService {
     async execute({id, name, description }: ICategoryRequest) {
@@ -7,13 +9,23 @@ class UpdateCategoryService {
         throw new Error("ID Incorrect");
       }
 
-        var vcategory = {
-          id: id, 
-          name: name, 
-          description: description
-        }
+      const categorysRepository = getCustomRepository(CategoryRepository);
+ 
+      const categoryAlreadyExists = await categorysRepository.findOne({
+        id,
+      });
+   
+      if (!categoryAlreadyExists) {
+        throw new Error("Category not exists");
+      }
 
-        return { message: "Categoria Atualizada com Sucesso" }
+      categoryAlreadyExists.name = name;
+      categoryAlreadyExists.description = description;
+      categoryAlreadyExists.updated_at = new Date();
+      
+      await categorysRepository.update(id, categoryAlreadyExists);
+
+      return { message: "Categoria Atualizada com Sucesso" }
     }
 }
 
